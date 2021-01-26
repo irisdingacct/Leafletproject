@@ -1,0 +1,56 @@
+---
+title: "Week2 Project Data Product - Sydney CBD Tourist Map"
+author: "IrisDingLing"
+date: "26/01/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Loading Leaflet
+
+
+```{r}
+library(leaflet)
+library(ggplot2)
+library(htmlwidgets)
+map <- leaflet() %>%
+          addTiles()
+```
+
+```{r, eval=FALSE}
+
+set.seed(2021-01-26)
+tourIcon <- makeIcon(
+  iconUrl = "https://pbs.twimg.com/media/ESZQZwEXQAMekRW?format=jpg&name=medium",
+  iconWidth = 31*215/230, iconHeight = 31,
+  iconAnchorX = 31*215/230/2, iconAnchorY = 16
+)
+
+
+
+Sydtour <- data.frame(
+          name = c("Sydney Harbour Bridge", "Sydney Opera House", "Sydney Tower Eye", "Royal Botanic Garden", "St mary's cathedral", "Darling Harbour", "Sea Life Sydney Aquarium", "The Rocks", "Art Gallery of NSW", "Hyde Park", "Museum of Sydney", "Museum of Contemporary Art Australia"),
+          lat = c(-33.8523, -33.8568, -33.8711, -33.86165, -33.8712, -33.860184, -33.8696, -33.8599, -33.8688, -33.8731, -33.8642, -33.8599),
+          lng = c(151.2108, 151.2153, 151.2091, 151.22086, 151.2133, 151.20802, 151.2021, 151.2090, 151.2174, 151.2113, 151.2114, 151.2090)
+)
+
+map <- map %>%
+  addMarkers(lat=Sydtour$lat, lng=Sydtour$lng, 
+             popup= Sydtour$name, icon = tourIcon)%>% 
+          addTiles() %>%
+          addRectangles(lat1 = -33.8500, lng1 = 151.2000, 
+                        lat2 = -33.8800, lng2 = 151.2230)
+
+
+map
+
+saveWidget(widget = map, 
+           file = "Sydney_CBD_tour.html", 
+           selfcontained = TRUE)
+
+
+```
+
