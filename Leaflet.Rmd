@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Please kindly click on this page for interactive map
-https://rpubs.com/irisdingacct/717359
+https://rpubs.com/irisdingacct/717368
 
 ## Loading Leaflet
 
