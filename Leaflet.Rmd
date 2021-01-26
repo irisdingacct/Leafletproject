@@ -9,6 +9,9 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Please kindly click on this page for interactive map
+https://rpubs.com/irisdingacct/717359
+
 ## Loading Leaflet
 
 
